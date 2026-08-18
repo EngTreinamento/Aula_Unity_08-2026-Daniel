@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c26456e5ffce29547b88cc9067a36e04, type: 3}
-  m_Name: Item2
+  m_Name: ItemScore1
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleData
-  score: 150
-  color: {r: 1, g: 0.43660346, b: 0, a: 1}
+  CollectibleType: 0
+  valueCollectible: 100
+  material: {fileID: 0}

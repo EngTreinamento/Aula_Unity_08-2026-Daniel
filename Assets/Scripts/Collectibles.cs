@@ -7,8 +7,7 @@ public class Collectibles : MonoBehaviour
 
     void Start()
     {
-        GetComponent<MeshRenderer>().material.color = collectible.color;
-        Debug.Log("Total de Pontos que esse coletável vai dar: " +  collectible.score);
+        GetComponent<MeshRenderer>().material = collectible.material;
     }
 
     // Update is called once per frame
@@ -43,11 +42,26 @@ public class Collectibles : MonoBehaviour
 
     private void OnPlayerCollision()
     {
-        // Primeiro ele vai procurar o ScoreManager na cena
-        ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+        switch (collectible.CollectibleType)
+        {
+            case CollectibleType.Score:
+                // Primeiro ele vai procurar o ScoreManager na cena
+                ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
 
-        // Depois ele vai usar o método do ScoreManager para adicionar a pontuação
-        scoreManager.AddScore(collectible.score);
+                // Depois ele vai usar o método do ScoreManager para adicionar a pontuação
+                scoreManager.AddScore(collectible.valueCollectible);
+                break;
+
+            case CollectibleType.Ammo:
+                Debug.Log("Carregou " +  collectible.valueCollectible + " de munição");
+                break;
+
+            case CollectibleType.Heal:
+                Debug.Log("Recuperou " + collectible.valueCollectible + " de vida");
+                break;
+        }
+
+        
 
         // Por fim, ele vai destruir o coletável para limpar a cena
         Destroy(gameObject);

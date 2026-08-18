@@ -13,7 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     // Usando o RigidBody para movimentação que por padrão já é para movimentação 3D
     Rigidbody rb;
-
+    //Referência do PlayerWeapon para saber quem está controlando a visualização
+    PlayerWeapon playerWeapon;
     // Duas referências de eixo para movimentar o personagem
     float moveX;
     float moveZ;
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Fazemos apenas os 'Getters' do que precisamos de referência da cena
         rb = GetComponent<Rigidbody>();
+        playerWeapon = GetComponent<PlayerWeapon>();
         cameraTransform = Camera.main.transform;
     }
 

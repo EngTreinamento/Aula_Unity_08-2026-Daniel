@@ -1,9 +1,15 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CollectibleData", menuName = "Daniel/Coletavel")]
 public class CollectibleData : ScriptableObject
 {
-    public int score;
+    public CollectibleType CollectibleType;
 
-    public Color color = Color.white;
+    public int valueCollectible;
+
+    public Material material;
 }
+
+[Serializable]
+public enum CollectibleType { Score, Ammo, Heal }
