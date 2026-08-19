@@ -51,11 +51,15 @@ public class PlayerWeapon : MonoBehaviour
     //Trava de ação enquanto recarrega
     bool reloading;
 
+    [SerializeField] AudioClip shootAudioClip;
+    AudioSource audioSource;
+
     private void Awake()
     {
         cam = Camera.main;
 
         myCollider = GetComponent<Collider>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -189,6 +193,10 @@ public class PlayerWeapon : MonoBehaviour
         //Quando eu coloco -- ou ++ ele reduz ou aumenta 1 na variável
         actualAmmo--;
         UpdateAmmoInfo();
+
+        audioSource.Stop();
+        audioSource.clip = shootAudioClip;
+        audioSource.Play();
 
         // Chamo a corrotina de intervalo de cadência
         StartCoroutine(CadenceInterval());
