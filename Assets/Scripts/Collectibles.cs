@@ -25,7 +25,7 @@ public class Collectibles : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Através de Colisão normal");
-            OnPlayerCollision();
+            OnPlayerCollision(collision.gameObject);
         }
     }
 
@@ -36,11 +36,11 @@ public class Collectibles : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Através de Colisão trigger");
-            OnPlayerCollision();
+            OnPlayerCollision(other.gameObject);
         }
     }
 
-    private void OnPlayerCollision()
+    private void OnPlayerCollision(GameObject player)
     {
         switch (collectible.CollectibleType)
         {
@@ -53,7 +53,10 @@ public class Collectibles : MonoBehaviour
                 break;
 
             case CollectibleType.Ammo:
-                Debug.Log("Carregou " +  collectible.valueCollectible + " de munição");
+                if(player.TryGetComponent(out PlayerWeapon pw))
+                {
+                    pw.AddPente(1);
+                }
                 break;
 
             case CollectibleType.Heal:

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleData
   CollectibleType: 0
   valueCollectible: 100
-  material: {fileID: 0}
+  material: {fileID: 2100000, guid: e78436b1ebb266d43afe705487ee8e66, type: 2}

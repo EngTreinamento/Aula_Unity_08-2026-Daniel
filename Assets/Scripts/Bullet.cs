@@ -32,7 +32,11 @@ public class Bullet : MonoBehaviour
     //Por enquanto, como não temos inimigo, quando ele colide com algo, ele simplesmente destroi
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Causou " + damage + " de dano");
+        if(other.gameObject.TryGetComponent(out Enemy enemy))
+        {
+            enemy.TakeDamage(damage);
+        }
+
         Destroy(gameObject);
     }
 }

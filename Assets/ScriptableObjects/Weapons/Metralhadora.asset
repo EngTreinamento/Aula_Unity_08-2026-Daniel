@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Metralhadora
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   damage: 30
-  cadence: 30
+  cadence: 10
   range: 10
   ammoCapacity: 30
   weaponMaterial: {fileID: 0}
